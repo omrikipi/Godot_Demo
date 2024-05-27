@@ -1,6 +1,6 @@
-using Events;
 using Godot;
 using Models;
+using Resources;
 
 public partial class Entity : Base_Scene<Entity_Model>
 {
@@ -14,18 +14,18 @@ public partial class Entity : Base_Scene<Entity_Model>
 
     public override void _Ready()
     {
-        Model = new Entity_Model(Resource.Hp);
+        Model = new Entity_Model(Resource);
         hp_lable = GetNode<Label>("Hp_Label");
+        GetNode<Label>("Name_Label").Text = Resource.Name;
     }
 
     public override void Update()
     {
-        hp_lable.Text = Model.Hp.ToString("D3");
+        hp_lable.Text = Model.Is_Alive ? Model.Hp.ToString("D3") : "Dead";
     }
 
     public void On_button_pressed()
     {
-        Enemy.Model.Hp -= Resource.Damge;
-        Game_Update.Invoke();
+        Model.Hit(Enemy.Model);
     }
 }
