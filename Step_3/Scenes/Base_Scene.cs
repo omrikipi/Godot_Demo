@@ -1,9 +1,9 @@
 using Events;
 using Godot;
 
-public partial class Base_Scene<T> : Node2D
+public partial class Base_Scene<TModel> : Node2D
 {
-    public T Model;
+    public TModel Model { get; protected set; }
 
     public Base_Scene()
     {
