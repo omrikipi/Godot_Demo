@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Core;
 
-public abstract class Message<TMessage>
+public abstract record Message<TMessage>
     where TMessage : class
 {
     private static readonly List<Action<TMessage>> handlers = new();
@@ -15,15 +15,15 @@ public abstract class Message<TMessage>
             listener(e);
     }
 
-    public static void Handle(Action<TMessage> listener)
+    public static void Handle(Action<TMessage> handler)
     {
-        if (!handlers.Contains(listener))
-            handlers.Add(listener);
+        if (!handlers.Contains(handler))
+            handlers.Add(handler);
     }
 
-    public static void Unhandle(Action<TMessage> listener)
+    public static void Unhandle(Action<TMessage> handler)
     {
-        if (handlers.Contains(listener))
-            handlers.Remove(listener);
+        if (handlers.Contains(handler))
+            handlers.Remove(handler);
     }
 }

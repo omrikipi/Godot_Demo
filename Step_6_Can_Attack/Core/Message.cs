@@ -17,15 +17,15 @@ public abstract record Message<TMessage>
         Console.WriteLine(GetType().Name + " ended");
     }
 
-    public static void Handle(Action<TMessage> listener)
+    public static void Handle(Action<TMessage> handler)
     {
-        if (!handlers.Contains(listener))
-            handlers.Add(listener);
+        if (!handlers.Contains(handler))
+            handlers.Add(handler);
     }
 
-    public static void Unhandle(Action<TMessage> listener)
+    public static void Unhandle(Action<TMessage> handler)
     {
-        if (handlers.Contains(listener))
-            handlers.Remove(listener);
+        if (handlers.Contains(handler))
+            handlers.Remove(handler);
     }
 }
