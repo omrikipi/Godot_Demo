@@ -1,13 +1,13 @@
-using Events;
+using Messages;
 using Godot;
 
-public partial class Base_Scene<TModel> : Node2D
+public partial class Base_Scene<T> : Node2D
 {
-    public TModel Model { get; protected set; }
+    public T Model;
 
     public Base_Scene()
     {
-        Game_Update.Listen(Update);
+        Update_Message.Handle((e) => Update());
     }
 
     public virtual void Update() { }

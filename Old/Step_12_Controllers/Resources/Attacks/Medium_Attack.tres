@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Attack_Resource" load_steps=2 format=3 uid="uid://8ul2lvcab012"]
+
+[ext_resource type="Script" path="res://Resources/Definitions/Attack_Resource.cs" id="1_um17d"]
+
+[resource]
+script = ExtResource("1_um17d")
+Cooldown = 4
+Damge = 2

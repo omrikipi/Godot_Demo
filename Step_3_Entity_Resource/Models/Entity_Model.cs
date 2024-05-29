@@ -1,6 +1,3 @@
-using Godot;
-using System;
-
 namespace Models;
 
 public class Entity_Model
