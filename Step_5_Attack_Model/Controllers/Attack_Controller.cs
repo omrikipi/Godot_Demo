@@ -11,6 +11,6 @@ public class Attack_Controller
 
     private void Attack_Command_Handler(Attack_Command command)
     {
-        command.Enemy.Hit(command.Model.Attack_Model.Damage);
+        command.Target.Hit(command.Model.Damage);
     }
 }

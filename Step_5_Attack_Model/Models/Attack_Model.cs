@@ -4,18 +4,17 @@ namespace Models;
 
 public class Attack_Model
 {
-    private readonly Entity_Model owner;
-
-    public int Damage { get; set; }
+    public Entity_Model Owner { get; }
+    public int Damage { get; }
 
     public Attack_Model(Entity_Model owner, Entity_Resource resource)
     {
-        this.owner = owner;
+        Owner = owner;
         Damage = resource.Damage;
     }
 
-    public void Attack(Entity_Model enemy)
+    public void Attack(Entity_Model target)
     {
-        new Attack_Command(owner, enemy);
+        new Attack_Command(this, target);
     }
 }

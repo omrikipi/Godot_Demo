@@ -20,11 +20,14 @@ public class Attack_Controller
     private void Attack_Command_Handler(Attack_Command command)
     {
         if (Can_Attack(command.Model, command.Target))
+        {
+            command.Model.Cooldown.Reset();
             command.Target.Hit(command.Model.Damage);
+        }
     }
 
     private bool Can_Attack(Attack_Model attack, Entity_Model target)
     {
-        return target.Is_Alive & attack.Owner.Is_Alive;
+        return target.Is_Alive & attack.Owner.Is_Alive & !attack.Cooldown.Is_On;
     }
 }

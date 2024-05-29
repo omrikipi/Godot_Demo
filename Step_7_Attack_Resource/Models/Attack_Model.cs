@@ -1,5 +1,6 @@
 using Commands;
 using Messages;
+using Resources;
 
 namespace Models;
 
@@ -8,7 +9,7 @@ public class Attack_Model
     public Entity_Model Owner { get; }
     public int Damage { get; }
 
-    public Attack_Model(Entity_Model owner, Entity_Resource resource)
+    public Attack_Model(Entity_Model owner, Attack_Resource resource)
     {
         Owner = owner;
         Damage = resource.Damage;
