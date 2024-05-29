@@ -6,7 +6,7 @@ using Models;
 
 namespace Controllers;
 
-public partial class Cooldown_Controller : Node
+public class Cooldown_Controller
 {
     private readonly List<Cooldown_Model> models;
 
