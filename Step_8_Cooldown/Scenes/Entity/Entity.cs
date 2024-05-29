@@ -16,8 +16,10 @@ public partial class Entity : Base_Scene<Entity_Model>
 
     public override void _Ready()
     {
+        GetNode<Label>("Name_Label").Text = Resource.Name;
         hp_lable = GetNode<Label>("Hp_Label");
         attack_button = GetNode<Button>("Attack_Button");
+        attack_button.Text = Resource.Attack.Name;
         Model = new Entity_Model(Resource);
     }
 
