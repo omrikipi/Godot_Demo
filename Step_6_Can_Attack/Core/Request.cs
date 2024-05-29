@@ -7,12 +7,12 @@ public abstract record Request<TRequest, TResult>
 {
     public static Func<TRequest, TResult> Handler;
 
-    public TResult Send()
+    public TResult Result { get; }
+
+    public Request()
     {
         Console.WriteLine(GetType().Name + " started");
-        var reqeust = this as TRequest;
-        var result = Handler(reqeust);
+        Result = Handler(this as TRequest);
         Console.WriteLine(GetType().Name + " ended");
-        return result;
     }
 }

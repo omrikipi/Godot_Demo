@@ -14,14 +14,8 @@ public partial class Cooldown_Controller : Node
     {
         models = new List<Cooldown_Model>();
         Model_Created_Message<Cooldown_Model>.Handle(msg => models.Add(msg.Model));
-        Reset_Cooldown_Command.Handle(Reset_Cooldown_Command_Handler);
+        Reset_Cooldown_Command.Handle(c => models.Add(c.Model));
         Time_Message.Handle(Time_Message_Handler);
-    }
-
-    private void Reset_Cooldown_Command_Handler(Reset_Cooldown_Command command)
-    {
-        models.Add(command.Model);
-        command.Model.Current = command.Model.Cooldown;
     }
 
     private void Time_Message_Handler(Time_Message message)

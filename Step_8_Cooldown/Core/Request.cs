@@ -7,12 +7,12 @@ public abstract record Request<TRequest, TResult> : Base
 {
     public static Func<TRequest, TResult> Handler;
 
-    public TResult Send()
+    public TResult Result { get; }
+
+    public Request()
     {
         Started();
-        var reqeust = this as TRequest;
-        var result = Handler(reqeust);
+        Result = Handler(this as TRequest);
         Ended();
-        return result;
     }
 }

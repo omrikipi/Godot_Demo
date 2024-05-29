@@ -21,6 +21,6 @@ public class Attack_Model
 
     public bool Can_Attack(Entity_Model enemy)
     {
-        return new Can_Attack_Request(this, enemy).Send();
+        return new Can_Attack_Request(this, enemy).Result;
     }
 }

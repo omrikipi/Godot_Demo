@@ -18,6 +18,7 @@ public class Cooldown_Model
 
     public void Reset()
     {
+        Current = Cooldown;
         new Reset_Cooldown_Command(this);
     }
 }

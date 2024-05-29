@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace Core;
 
@@ -20,9 +21,10 @@ public abstract record Base
 
     protected void Write_log(string message)
     {
-        var time = DateTime.Now.ToString("HH:mm:ss");
+        var sb = new StringBuilder();
+        sb.Append(DateTime.Now.ToString("HH:mm:ss:ff"));
         for (int i = 0; i < ind; i++)
-            time += '\t';
-        Console.WriteLine($"{time} {GetType().Name} {message}");
+            sb.Append('\t');
+        Console.WriteLine($"{sb} {GetType().Name} {message}");
     }
 }
