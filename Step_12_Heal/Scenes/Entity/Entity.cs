@@ -9,7 +9,7 @@ public partial class Entity : Base_Scene<Entity_Model>
     public Entity_Resource Resource;
 
     [Export]
-    public Entity[] Enemies;
+    public Entity[] Targets;
 
     private Label hp_lable;
 
@@ -19,12 +19,12 @@ public partial class Entity : Base_Scene<Entity_Model>
         hp_lable = GetNode<Label>("Hp_Label");
         Model = new Entity_Model(Resource);
         var actions = GetNode<Actions_Scene>("Actions");
-        actions.Targets = Enemies.ToList();
+        actions.Targets = Targets.ToList();
         actions.Model = Model.Actions;
     }
 
     public override void Update()
     {
-        hp_lable.Text = Model.Is_Alive ? Model.Hp.ToString("D3") : "Dead";
+        hp_lable.Text = Model.Is_Alive ? $"{Model.Hp:D3} / {Model.Max_Hp:D3}" : "Dead";
     }
 }

@@ -8,12 +8,12 @@ public class Entity_Controller
 {
     public Entity_Controller()
     {
-        Hit_Command.Handle(Hit_Command_Handler);
+        Hp_Change_Command.Handle(Hp_Change_Command_Handler);
     }
 
-    private void Hit_Command_Handler(Hit_Command command)
+    private void Hp_Change_Command_Handler(Hp_Change_Command command)
     {
-        command.Model.Hp = Math.Max(0, command.Model.Hp - command.Damge);
+        command.Model.Hp = Math.Min(command.Model.Max_Hp, Math.Max(0, command.Model.Hp + command.Amount));
         new Update_Message();
     }
 }

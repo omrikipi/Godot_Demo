@@ -14,16 +14,16 @@ public class Attack_Model : Action_Model
         Damage = resource.Damage;
     }
 
-    public override void Do(Entity_Model enemy)
+    public override void Do(Entity_Model target)
     {
-        if (Can_Do(enemy))
-            new Attack_Command(this, enemy);
+        if (Can_Do(target))
+            new Attack_Command(this, target);
     }
 
-    public override bool Can_Do(Entity_Model enemy)
+    public override bool Can_Do(Entity_Model target)
     {
-        if (enemy == null)
+        if (target == null)
             return false;
-        return new Can_Attack_Request(this, enemy).Result;
+        return new Can_Attack_Request(this, target).Result;
     }
 }
