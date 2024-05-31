@@ -23,8 +23,6 @@ public class Attack_Model : Action_Model
 
     public override bool Can_Do(IEntity_Model target)
     {
-        if (target == null)
-            return false;
         return new Can_Attack_Request(this, target).Result;
     }
 }

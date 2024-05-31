@@ -13,7 +13,8 @@ public class Heal_Controller
 
     private bool Can_Heal_Request_Handler(Can_Heal_Request request)
     {
-        return request.Target.Is_Alive &
+        return request.Target != null &&
+            request.Target.Is_Alive &
             request.Model.Owner.Is_Alive &
             !request.Model.Cooldown.In_Progress;
     }

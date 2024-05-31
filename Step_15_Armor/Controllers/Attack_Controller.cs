@@ -13,7 +13,8 @@ public class Attack_Controller
 
     private bool Can_Attack_Request_Handler(Can_Attack_Request request)
     {
-        return request.Target.Is_Alive &
+        return request.Target != null &&
+            request.Target.Is_Alive &
             request.Model.Owner.Is_Alive &
             !request.Model.Cooldown.In_Progress;
     }
