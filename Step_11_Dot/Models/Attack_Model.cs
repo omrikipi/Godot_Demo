@@ -9,21 +9,26 @@ public class Attack_Model
     public Entity_Model Owner { get; }
     public Timer_Model Cooldown { get; }
     public int Damage { get; }
+    public string Name { get; }
 
     public Attack_Model(Entity_Model owner, Attack_Resource resource)
     {
         Owner = owner;
         Damage = resource.Damage;
+        Name = resource.Name;
         Cooldown = new Timer_Model(resource.Cooldown);
     }
 
-    public void Attack(Entity_Model enemy)
+    public virtual void Attack(Entity_Model enemy)
     {
-        new Attack_Command(this, enemy);
+        if (Can_Attack(enemy))
+            new Attack_Command(this, enemy);
     }
 
-    public bool Can_Attack(Entity_Model enemy)
+    public virtual bool Can_Attack(Entity_Model enemy)
     {
+        if (enemy == null)
+            return false;
         return new Can_Attack_Request(this, enemy).Result;
     }
 }

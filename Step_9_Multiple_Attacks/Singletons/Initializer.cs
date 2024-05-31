@@ -7,7 +7,7 @@ public partial class Initializer : Node
 {
     public Initializer()
     {
-        new Cooldown_Controller();
+        new Timer_Controller();
         new Entity_Controller();
         new Attack_Controller();
     }

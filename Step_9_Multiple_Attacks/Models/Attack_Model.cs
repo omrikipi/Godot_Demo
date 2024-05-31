@@ -7,7 +7,7 @@ namespace Models;
 public class Attack_Model
 {
     public Entity_Model Owner { get; }
-    public Cooldown_Model Cooldown { get; }
+    public Timer_Model Cooldown { get; }
     public int Damage { get; }
     public string Name { get; }
 
@@ -16,7 +16,7 @@ public class Attack_Model
         Owner = owner;
         Damage = resource.Damage;
         Name = resource.Name;
-        Cooldown = new Cooldown_Model(resource.Cooldown);
+        Cooldown = new Timer_Model(resource.Cooldown);
     }
 
     public void Attack(Entity_Model enemy)

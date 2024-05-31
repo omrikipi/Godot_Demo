@@ -1,6 +1,5 @@
 using Commands;
 using Messages;
-using Models;
 
 namespace Controllers;
 
@@ -14,20 +13,14 @@ public class Attack_Controller
 
     private bool Can_Attack_Request_Handler(Can_Attack_Request request)
     {
-        return Can_Attack(request.Attack, request.Target);
+        return request.Target.Is_Alive &
+            request.Attack.Owner.Is_Alive &
+            !request.Attack.Cooldown.In_Progress;
     }
 
     private void Attack_Command_Handler(Attack_Command command)
     {
-        if (Can_Attack(command.Model, command.Target))
-        {
-            command.Model.Cooldown.Start();
-            command.Target.Hit(command.Model.Damage);
-        }
-    }
-
-    private bool Can_Attack(Attack_Model attack, Entity_Model target)
-    {
-        return target.Is_Alive & attack.Owner.Is_Alive & attack.Cooldown.Ended;
+        command.Model.Cooldown.Start();
+        command.Target.Hit(command.Model.Damage);
     }
 }
