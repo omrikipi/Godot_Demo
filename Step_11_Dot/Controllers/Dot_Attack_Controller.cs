@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Commands;
 using Messages;
 using Models;
@@ -18,10 +19,25 @@ public class Dot_Attack_Controller
 
     private void Dot_Attack_Command_Handler(Dot_Attack_Command command)
     {
-        var timer = new Timer_Model(command.Model.Time_Between);
-        timers_to_models[timer] = command;
+        var timer = Create_Or_Get(command);
         command.Model.Cooldown.Start();
         Dot_Attack(timer, command);
+    }
+
+    private Timer_Model Create_Or_Get(Dot_Attack_Command command)
+    {
+        var existing = timers_to_models.FirstOrDefault(kv => Equals(kv.Value, command));
+        if (existing.Key != null)
+        {
+            existing.Value.Activated = 0;
+            return existing.Key;
+        }
+        else
+        {
+            var timer = new Timer_Model(command.Model.Time_Between);
+            timers_to_models[timer] = command;
+            return timer;
+        }
     }
 
     private void Update_Message_Handler(Update_Message message)
@@ -48,5 +64,10 @@ public class Dot_Attack_Controller
     private static bool Can_Attack(Dot_Attack_Command cmd)
     {
         return cmd.Target.Is_Alive;
+    }
+
+    private static bool Equals(Dot_Attack_Command cmd1, Dot_Attack_Command cmd2)
+    {
+        return cmd1.Target == cmd2.Target & cmd1.Model.Name == cmd2.Model.Name;
     }
 }
