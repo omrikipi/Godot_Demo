@@ -1,4 +1,5 @@
 using System.Linq;
+using Core;
 using Godot;
 using Interfaces;
 using Messages;
@@ -13,11 +14,13 @@ public partial class Entity : Base_Scene<IEntity_Model>
     public Entity[] Targets;
 
     private Label hp_lable;
+    private Label shield_label;
 
     public override void _Ready()
     {
         GetNode<Label>("Name_Label").Text = Get_Name();
         hp_lable = GetNode<Label>("Hp_Label");
+        shield_label = GetNode<Label>("Shield_Label");
         Model = new Create_Entity_Model_Request(Resource).Result;
         var actions = GetNode<Actions_Scene>("Actions");
         actions.Targets = Targets.ToList();
@@ -26,13 +29,18 @@ public partial class Entity : Base_Scene<IEntity_Model>
 
     public override void Update()
     {
-        hp_lable.Text = Model.Is_Alive ?
-            $"{Model.Hp.Value:D3} / {Model.Hp.Max.Value:D3}" :
-            "Dead";
+        hp_lable.Text = Model.Is_Alive ? Get_String(Model.Hp) : "Dead";
+        shield_label.Visible = Model.Shield.Value > 0;
+        shield_label.Text = Get_String(Model.Shield);
     }
 
     private string Get_Name()
     {
         return Resource.Name + (Resource.Armor > 0 ? $" ({Resource.Armor})" : "");
+    }
+
+    private string Get_String(Range_Property<int> prop)
+    {
+        return $"{prop.Value:D2} / {prop.Max.Value:D2}";
     }
 }

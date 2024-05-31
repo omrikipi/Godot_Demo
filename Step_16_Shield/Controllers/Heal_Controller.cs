@@ -1,3 +1,4 @@
+using System;
 using Commands;
 using Messages;
 
@@ -7,8 +8,9 @@ public class Heal_Controller
 {
     public Heal_Controller()
     {
-        Heal_Command.Handle(Heal_Command_Handler);
         Can_Heal_Request.Handler = Can_Heal_Request_Handler;
+        Heal_Command.Handle(Heal_Command_Handler);
+        Shield_Command.Handle(Shield_Command_Handler);
     }
 
     private bool Can_Heal_Request_Handler(Can_Heal_Request request)
@@ -23,5 +25,13 @@ public class Heal_Controller
     {
         command.Model.Cooldown.Start();
         command.Target.Hp.Value += command.Model.Heal;
+    }
+
+    private void Shield_Command_Handler(Shield_Command command)
+    {
+        command.Model.Cooldown.Start();
+        command.Target.Shield.Max.Value = command.Model.Amount;
+        command.Target.Shield.Value = command.Model.Amount;
+        new Update_Message();
     }
 }

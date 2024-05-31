@@ -21,6 +21,11 @@ public interface IEntity_Model
     int Armor { get; }
 
     /// <summary>
+    /// The amount of shield that takes damage (without armor reduction) before the hp is reduce
+    /// </summary>
+    Range_Property<int> Shield { get; set; }
+
+    /// <summary>
     /// Is the entity have more then 0 hp
     /// </summary>
     bool Is_Alive => Hp.Value > 0;

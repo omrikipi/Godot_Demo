@@ -32,6 +32,8 @@ public class Creat_Models_Controller
             return new Hot_Model(model, resource as Hot_Resource);
         if (resource is Heal_Resource)
             return new Heal_Model(model, resource as Heal_Resource);
+        if (resource is Shield_Resource)
+            return new Shield_Model(model, resource as Shield_Resource);
         return null;
     }
 }
