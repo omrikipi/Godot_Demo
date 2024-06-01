@@ -4,7 +4,7 @@ using Models;
 
 namespace Commands;
 
-public record Attack_Command(Attack_Model Model, IEntity_Model Target)
-    : Command<Attack_Model, Attack_Command>(Model)
+public record Attack_Command(Attack_Model Model, IHp_Model Target)
+    : Message<Attack_Command>()
 {
 }

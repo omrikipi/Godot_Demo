@@ -26,8 +26,13 @@ public partial class Entity : Base_Scene<IEntity_Model>
 
     public override void Update()
     {
-        hp_lable.Text = Model.Is_Alive ?
-            $"{Model.Hp.Value:D3} / {Model.Hp.Max.Value:D3}" :
+        hp_lable.Text = Get_Hp();
+    }
+
+    private string Get_Hp()
+    {
+        return Model.Is_Alive ?
+            $"{Model.Hp.Value:D2} / {Model.Hp.Max:D2}" :
             "Dead";
     }
 

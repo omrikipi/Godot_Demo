@@ -18,7 +18,7 @@ public partial class Entity : Base_Scene<Entity_Model>
 
     public override void Update()
     {
-        hp_lable.Text = Model.Hp.ToString("D3");
+        hp_lable.Text = Model.Hp.ToString("D2");
     }
 
     public void On_button_pressed()

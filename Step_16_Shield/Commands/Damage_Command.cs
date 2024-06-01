@@ -3,7 +3,7 @@ using Interfaces;
 
 namespace Commands;
 
-public record Damage_Command(IEntity_Model Model, int Amount)
-    : Command<IEntity_Model, Damage_Command>(Model)
+public record Damage_Command(IHp_Model Model, int Amount)
+    : Message<Damage_Command>()
 {
 }

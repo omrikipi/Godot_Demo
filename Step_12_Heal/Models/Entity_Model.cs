@@ -1,33 +1,19 @@
 using System.Linq;
-using Commands;
+using Core;
 using Resources;
 
 namespace Models;
 
 public class Entity_Model
 {
-    public int Max_Hp { get; set; }
-    public int Hp { get; set; }
+    public Ranged_Value<int> Hp { get; set; }
     public Action_Model[] Actions { get; }
-    public bool Is_Alive => Hp > 0;
+    public bool Is_Alive => Hp.Value > 0;
 
     public Entity_Model(Entity_Resource resource)
     {
-        Max_Hp = resource.Hp;
-        Hp = resource.Hp;
-        Actions = resource.Actions
-            .Select(Get_Model)
-            .ToArray();
-    }
-
-    public void Hit(int damage)
-    {
-        new Hp_Change_Command(this, -damage);
-    }
-
-    public void Heal(int amount)
-    {
-        new Hp_Change_Command(this, amount);
+        Hp = new(resource.Hp, 0, resource.Hp);
+        Actions = resource.Actions.Select(Get_Model).ToArray();
     }
 
     private Action_Model Get_Model(Action_Resource resource)

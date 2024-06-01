@@ -4,7 +4,7 @@ using Interfaces;
 namespace Commands;
 
 public record Over_Time_Command(IOver_Time_Model Model, IEntity_Model Target) :
-    Command<IOver_Time_Model, Over_Time_Command>(Model)
+    Message<Over_Time_Command>()
 {
     public int Activated { get; set; }
 

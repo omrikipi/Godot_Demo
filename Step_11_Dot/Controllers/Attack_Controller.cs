@@ -15,12 +15,13 @@ public class Attack_Controller
     {
         return request.Target.Is_Alive &
             request.Attack.Owner.Is_Alive &
-            !request.Attack.Cooldown.In_Progress;
+            request.Attack.Cooldown.Ended;
     }
 
     private void Attack_Command_Handler(Attack_Command command)
     {
         command.Model.Cooldown.Start();
-        command.Target.Hit(command.Model.Damage);
+        command.Target.Hp.Value -= command.Model.Damage;
+        new Update_Message();
     }
 }

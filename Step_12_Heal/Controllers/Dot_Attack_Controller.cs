@@ -42,7 +42,8 @@ public class Dot_Attack_Controller
                 timer.Start();
             else
                 timers_to_models.Remove(timer);
-            cmd.Target.Hit(cmd.Model.Damage);
+            cmd.Target.Hp.Value -= cmd.Model.Damage;
+            new Update_Message();
         }
     }
 

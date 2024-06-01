@@ -4,7 +4,7 @@ using Models;
 
 namespace Commands;
 
-public record Shield_Command(Shield_Model Model, IEntity_Model Target)
-    : Command<Shield_Model, Shield_Command>(Model)
+public record Shield_Command(Shield_Model Model, IHp_Model Target)
+    : Message<Shield_Command>()
 {
 }

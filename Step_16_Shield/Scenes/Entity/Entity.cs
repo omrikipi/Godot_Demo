@@ -29,18 +29,13 @@ public partial class Entity : Base_Scene<IEntity_Model>
 
     public override void Update()
     {
-        hp_lable.Text = Model.Is_Alive ? Get_String(Model.Hp) : "Dead";
+        hp_lable.Text = Model.Is_Alive ? Model.Hp.ToString() : "Dead";
         shield_label.Visible = Model.Shield.Value > 0;
-        shield_label.Text = Get_String(Model.Shield);
+        shield_label.Text = Model.Shield.ToString();
     }
 
     private string Get_Name()
     {
         return Resource.Name + (Resource.Armor > 0 ? $" ({Resource.Armor})" : "");
-    }
-
-    private string Get_String(Range_Property<int> prop)
-    {
-        return $"{prop.Value:D2} / {prop.Max.Value:D2}";
     }
 }

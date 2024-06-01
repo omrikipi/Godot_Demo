@@ -1,9 +1,9 @@
 using Core;
-using Interfaces;
+using Models;
 
 namespace Commands;
 
-public record Start_Timer_Command(ITimer_Model Model)
-    : Command<ITimer_Model, Start_Timer_Command>(Model)
+public record Start_Timer_Command(Timer_Model Model)
+    : Message<Start_Timer_Command>()
 {
 }

@@ -1,5 +1,6 @@
 using System;
 using Commands;
+using Messages;
 
 namespace Controllers;
 
@@ -17,6 +18,7 @@ public class Damage_Controller
         if (damage > 0)
             damage = Get_After_Armor(command, damage);
         command.Model.Hp.Value -= damage;
+        new Update_Message();
     }
 
     private static int Get_After_Shield(Damage_Command command, int damage)

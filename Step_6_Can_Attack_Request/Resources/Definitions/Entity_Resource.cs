@@ -1,5 +1,7 @@
 using Godot;
 
+namespace Resources;
+
 [GlobalClass]
 public partial class Entity_Resource : Resource
 {

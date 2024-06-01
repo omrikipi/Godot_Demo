@@ -7,4 +7,5 @@
 [resource]
 script = ExtResource("2_ligl4")
 Hp = 7
+Armor = 0
 Actions = Array[Object]([ExtResource("1_dfyny"), ExtResource("3_vj4n7")])

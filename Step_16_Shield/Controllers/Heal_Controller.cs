@@ -25,12 +25,13 @@ public class Heal_Controller
     {
         command.Model.Cooldown.Start();
         command.Target.Hp.Value += command.Model.Heal;
+        new Update_Message();
     }
 
     private void Shield_Command_Handler(Shield_Command command)
     {
         command.Model.Cooldown.Start();
-        command.Target.Shield.Max.Value = command.Model.Amount;
+        command.Target.Shield.Max = command.Model.Amount;
         command.Target.Shield.Value = command.Model.Amount;
         new Update_Message();
     }

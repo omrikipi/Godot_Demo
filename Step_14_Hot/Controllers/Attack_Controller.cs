@@ -22,5 +22,6 @@ public class Attack_Controller
     {
         command.Model.Cooldown.Start();
         command.Target.Hp.Value -= command.Model.Damage;
+        new Update_Message();
     }
 }

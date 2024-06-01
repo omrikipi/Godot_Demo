@@ -1,4 +1,5 @@
 using Commands;
+using Messages;
 
 namespace Controllers;
 
@@ -11,6 +12,7 @@ public class Attack_Controller
 
     private void Attack_Command_Handler(Attack_Command command)
     {
-        command.Target.Hit(command.Model.Damage);
+        command.Target.Hp.Value -= command.Model.Damage;
+        new Update_Message();
     }
 }
