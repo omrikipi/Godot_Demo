@@ -59,7 +59,6 @@ public class Over_Time_Controller
     private void Do(Over_Time_Command cmd)
     {
         cmd.Target.Hp.Value += Get_Amount(cmd);
-        new Update_Message();
     }
 
     private static int Get_Amount(Over_Time_Command cmd)

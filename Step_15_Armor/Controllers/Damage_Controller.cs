@@ -15,6 +15,5 @@ public class Damage_Controller
     {
         var amount = Math.Max(1, command.Amount - command.Model.Armor);
         command.Model.Hp.Value -= amount;
-        new Update_Message();
     }
 }

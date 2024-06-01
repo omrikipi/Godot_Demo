@@ -5,7 +5,7 @@ using Models;
 namespace Commands;
 
 public record Dot_Attack_Command(Dot_Attack_Model Model, IHp_Model Target)
-    : Message<Dot_Attack_Command>()
+    : Command<Dot_Attack_Command>()
 {
     public int Activated { get; set; }
 }

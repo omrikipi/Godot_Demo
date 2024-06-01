@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Commands;
 using Interfaces;
 using Messages;
 
@@ -12,11 +11,11 @@ public class Timer_Controller
     public Timer_Controller()
     {
         timers = new();
-        Start_Timer_Command.Handle(Start_Timer_Command_Handler);
+        Start_Timer_Message.Handle(Start_Timer_Command_Handler);
         Time_Message.Handle(Time_Message_Handler);
     }
 
-    private void Start_Timer_Command_Handler(Start_Timer_Command cmd)
+    private void Start_Timer_Command_Handler(Start_Timer_Message cmd)
     {
         if (!timers.Contains(cmd.Model))
             timers.Add(cmd.Model);

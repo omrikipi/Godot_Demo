@@ -1,5 +1,5 @@
-using Commands;
 using Interfaces;
+using Messages;
 
 namespace Models;
 
@@ -17,6 +17,6 @@ public class Timer_Model : ITimer_Model
     public void Start()
     {
         Current = Time;
-        new Start_Timer_Command(this);
+        new Start_Timer_Message(this);
     }
 }

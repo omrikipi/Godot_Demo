@@ -23,6 +23,5 @@ public class Heal_Controller
     {
         command.Model.Cooldown.Start();
         command.Target.Hp.Value += command.Model.Heal;
-        new Update_Message();
     }
 }

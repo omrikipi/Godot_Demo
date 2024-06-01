@@ -53,7 +53,7 @@ public class Over_Time_Controller
         if (existing.Key != null)
             return existing.Key;
         else
-            return new Timer_Model(command.Model.Time_Between);
+            return new Timer_Model(command.Model.Time_Between, false);
     }
 
     private void Do(Over_Time_Command cmd)
@@ -61,10 +61,7 @@ public class Over_Time_Controller
         if (cmd.Model is Dot_Model)
             new Damage_Command(cmd.Target, (cmd.Model as Dot_Model).Damage);
         else
-        {
             cmd.Target.Hp.Value += (cmd.Model as Hot_Model).Heal;
-            new Update_Message();
-        }
     }
 
     private static bool Can_Do(Over_Time_Command cmd)
