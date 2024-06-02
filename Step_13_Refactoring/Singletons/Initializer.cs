@@ -7,7 +7,7 @@ public partial class Initializer : Node
 {
     public Initializer()
     {
-        new Creat_Models_Controller();
+        new Create_Models_Controller();
         new Timer_Controller();
         new Heal_Controller();
         new Attack_Controller();

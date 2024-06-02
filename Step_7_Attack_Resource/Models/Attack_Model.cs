@@ -15,13 +15,13 @@ public class Attack_Model
         Damage = resource.Damage;
     }
 
-    public void Attack(Entity_Model enemy)
+    public void Attack(Entity_Model target)
     {
-        new Attack_Command(this, enemy);
+        new Attack_Command(this, target);
     }
 
-    public bool Can_Attack(Entity_Model enemy)
+    public bool Can_Attack(Entity_Model target)
     {
-        return new Can_Attack_Request(this, enemy).Result;
+        return new Can_Attack_Request(this, target).Result;
     }
 }

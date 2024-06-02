@@ -15,7 +15,7 @@ public abstract class Action_Model
         Cooldown = new Timer_Model(resource.Cooldown);
     }
 
-    public abstract void Do(Entity_Model enemy);
+    public abstract void Do(Entity_Model target);
 
-    public abstract bool Can_Do(Entity_Model enemy);
+    public abstract bool Can_Do(Entity_Model target);
 }

@@ -16,14 +16,11 @@ public class Attack_Model : Action_Model
 
     public override void Do(Entity_Model target)
     {
-        if (Can_Do(target))
-            new Attack_Command(this, target);
+		new Attack_Command(this, target);
     }
 
     public override bool Can_Do(Entity_Model target)
     {
-        if (target == null)
-            return false;
         return new Can_Attack_Request(this, target).Result;
     }
 }

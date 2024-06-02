@@ -4,8 +4,8 @@ public class Entity_Model
 {
     public int Hp { get; set; }
 
-    public Entity_Model(int hp)
+    public Entity_Model(Entity_Resource resource)
     {
-        Hp = hp;
+        Hp = resource.Hp;
     }
 }

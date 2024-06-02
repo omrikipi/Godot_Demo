@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_n4gfr")
 Hp = 5
-Damge = 1
+Damage = 1

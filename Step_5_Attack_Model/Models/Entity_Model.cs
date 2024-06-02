@@ -11,6 +11,6 @@ public class Entity_Model
     public Entity_Model(Entity_Resource resource)
     {
         Hp = new(resource.Hp, 0, resource.Hp);
-        Attack_Model = new Attack_Model(this, resource);
+        Attack_Model = new Attack_Model(resource);
     }
 }

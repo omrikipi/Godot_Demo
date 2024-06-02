@@ -7,5 +7,5 @@ public partial class Entity_Resource : Resource
     public int Hp;
 
     [Export]
-    public int Damge;
+    public int Damage;
 }

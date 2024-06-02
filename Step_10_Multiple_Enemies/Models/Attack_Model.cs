@@ -26,8 +26,6 @@ public class Attack_Model
 
     public bool Can_Attack(Entity_Model enemy)
     {
-        if (enemy == null)
-            return false;
         return new Can_Attack_Request(this, enemy).Result;
     }
 }

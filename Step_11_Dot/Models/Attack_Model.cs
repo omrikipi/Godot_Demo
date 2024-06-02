@@ -21,14 +21,11 @@ public class Attack_Model
 
     public virtual void Attack(Entity_Model enemy)
     {
-        if (Can_Attack(enemy))
-            new Attack_Command(this, enemy);
+        new Attack_Command(this, enemy);
     }
 
-    public virtual bool Can_Attack(Entity_Model enemy)
+    public bool Can_Attack(Entity_Model enemy)
     {
-        if (enemy == null)
-            return false;
         return new Can_Attack_Request(this, enemy).Result;
     }
 }

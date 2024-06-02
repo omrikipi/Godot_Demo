@@ -9,14 +9,14 @@ public class Dot_Attack_Model : Attack_Model
     public int Time_Between { get; }
     public int Times { get; }
 
-    public Dot_Attack_Model(IEntity_Model owner, Dot_Resource resource)
+    public Dot_Attack_Model(IHp_Model owner, Dot_Resource resource)
     : base(owner, resource)
     {
         Time_Between = resource.Time_Between;
         Times = resource.Times;
     }
 
-    public override void Do(IEntity_Model enemy)
+    public override void Do(IHp_Model enemy)
     {
         new Dot_Attack_Command(this, enemy);
     }

@@ -16,14 +16,11 @@ public class Heal_Model : Action_Model
 
     public override void Do(Entity_Model enemy)
     {
-        if (Can_Do(enemy))
-            new Heal_Command(this, enemy);
+		new Heal_Command(this, enemy);
     }
 
     public override bool Can_Do(Entity_Model target)
     {
-        if (target == null)
-            return false;
         return new Can_Heal_Request(this, target).Result;
     }
 }
