@@ -8,7 +8,7 @@ public class Damage_Controller
 {
     public Damage_Controller()
     {
-        Damage_Command.Handle(Damage_Command_Handler);
+        Damage_Command.Handler = Damage_Command_Handler;
     }
 
     private void Damage_Command_Handler(Damage_Command command)

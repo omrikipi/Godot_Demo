@@ -1,14 +1,21 @@
+using System;
 using Messages;
 
 namespace Core;
 
-public abstract record Command<TCommand> : Message<TCommand>
+public abstract record Command<TCommand> : Command_Base
     where TCommand : class
 {
-    private static bool in_command;
+    public static Action<TCommand> Handler;
 
-    public Command()
+    public Command(bool update_message = true)
     {
-        new Update_Message();
+        Started();
+        ind++;
+        Handler(this as TCommand);
+        ind--;
+        if (ind == 0 & update_message)
+            new Update_Message();
+        Ended();
     }
 }

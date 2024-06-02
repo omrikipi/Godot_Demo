@@ -14,7 +14,7 @@ public class Over_Time_Controller
     public Over_Time_Controller()
     {
         timers_to_models = new();
-        Over_Time_Command.Handle(Over_Time_Command_Handler);
+        Over_Time_Command.Handler = Over_Time_Command_Handler;
         Update_Message.Handle(Update_Message_Handler);
     }
 
@@ -53,12 +53,13 @@ public class Over_Time_Controller
         if (existing.Key != null)
             return existing.Key;
         else
-            return new Timer_Model(command.Model.Time_Between);
+            return new Timer_Model(command.Model.Time_Between, false);
     }
 
     private void Do(Over_Time_Command cmd)
     {
         cmd.Target.Hp.Value += Get_Amount(cmd);
+        new Update_Message();
     }
 
     private static int Get_Amount(Over_Time_Command cmd)

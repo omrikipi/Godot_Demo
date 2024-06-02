@@ -14,7 +14,7 @@ public class Dot_Attack_Controller
     public Dot_Attack_Controller()
     {
         timers_to_models = new();
-        Dot_Attack_Command.Handle(Dot_Attack_Command_Handler);
+        Dot_Attack_Command.Handler = Dot_Attack_Command_Handler;
         Update_Message.Handle(Update_Message_Handler);
     }
 
@@ -44,6 +44,7 @@ public class Dot_Attack_Controller
             else
                 timers_to_models.Remove(timer);
             cmd.Target.Hp.Value -= cmd.Model.Damage;
+            new Update_Message();
         }
     }
 
@@ -58,7 +59,7 @@ public class Dot_Attack_Controller
         if (existing.Key != null)
             return existing.Key;
         else
-            return new Timer_Model(command.Model.Time_Between);
+            return new Timer_Model(command.Model.Time_Between, false);
     }
 
     private static bool Equals(Dot_Attack_Command cmd1, Dot_Attack_Command cmd2)
