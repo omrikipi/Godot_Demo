@@ -5,17 +5,17 @@ namespace Core;
 
 public abstract record Base
 {
-    private static int ind = 0;
+    protected static int Indentation = 0;
 
     protected virtual void Started()
     {
         Write_log("Started");
-        ind++;
+        Indentation++;
     }
 
     protected virtual void Ended()
     {
-        ind--;
+        Indentation--;
         Write_log("Ended");
     }
 
@@ -23,7 +23,7 @@ public abstract record Base
     {
         var sb = new StringBuilder();
         sb.Append(DateTime.Now.ToString("HH:mm:ss:ff"));
-        for (int i = 0; i < ind; i++)
+        for (int i = 0; i < Indentation; i++)
             sb.Append('\t');
         Console.WriteLine($"{sb} {GetType().Name} {message}");
     }

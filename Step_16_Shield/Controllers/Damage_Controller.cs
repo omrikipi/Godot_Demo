@@ -8,7 +8,7 @@ public class Damage_Controller
 {
     public Damage_Controller()
     {
-        Damage_Command.Handle(Damage_Command_Handler);
+        Damage_Command.Handler = Damage_Command_Handler;
     }
 
     private void Damage_Command_Handler(Damage_Command command)
@@ -18,7 +18,6 @@ public class Damage_Controller
         if (damage > 0)
             damage = Get_After_Armor(command, damage);
         command.Model.Hp.Value -= damage;
-        new Update_Message();
     }
 
     private static int Get_After_Shield(Damage_Command command, int damage)

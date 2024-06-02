@@ -17,8 +17,7 @@ public class Heal_Model : Action_Model
 
     public override void Do(IEntity_Model enemy)
     {
-        if (Can_Do(enemy))
-            new Heal_Command(this, enemy);
+        new Heal_Command(this, enemy);
     }
 
     public override bool Can_Do(IEntity_Model target)

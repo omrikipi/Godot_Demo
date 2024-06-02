@@ -12,7 +12,7 @@ public class Timer_Controller
     public Timer_Controller()
     {
         timers = new();
-        Start_Timer_Command.Handle(Start_Timer_Command_Handler);
+        Start_Timer_Command.Handler = Start_Timer_Command_Handler;
         Time_Message.Handle(Time_Message_Handler);
     }
 
