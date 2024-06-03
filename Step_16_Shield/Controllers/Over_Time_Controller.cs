@@ -38,14 +38,18 @@ public class Over_Time_Controller
         if (!Can_Do(cmd))
             timers_to_models.Remove(timer);
         else
-        {
-            if (cmd.Activated++ < cmd.Model.Times - 1)
-                timer.Start();
-            else
-                timers_to_models.Remove(timer);
-            Do(cmd);
-        }
+            Do(timer, cmd);
     }
+
+    private void Do(ITimer_Model timer, Over_Time_Command cmd)
+    {
+        if (cmd.Activated++ < cmd.Model.Times - 1)
+            timer.Start();
+        else
+            timers_to_models.Remove(timer);
+        Do(cmd);
+    }
+
 
     private ITimer_Model Get_Or_Create(Over_Time_Command command)
     {

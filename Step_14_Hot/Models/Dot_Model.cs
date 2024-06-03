@@ -16,8 +16,8 @@ public class Dot_Model : Attack_Model, IOver_Time_Model
         Times = resource.Times;
     }
 
-    public override void Do(IEntity_Model enemy)
+    public override void Do(IHp_Model target)
     {
-        new Over_Time_Command(this, enemy);
+        new Over_Time_Command(this, target);
     }
 }

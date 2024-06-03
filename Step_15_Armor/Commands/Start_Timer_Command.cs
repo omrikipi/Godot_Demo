@@ -1,9 +1,9 @@
 using Core;
-using Models;
+using Interfaces;
 
 namespace Commands;
 
-public record Start_Timer_Command(Timer_Model Model)
+public record Start_Timer_Command(ITimer_Model Model)
     : Command<Start_Timer_Command>(false)
 {
 }

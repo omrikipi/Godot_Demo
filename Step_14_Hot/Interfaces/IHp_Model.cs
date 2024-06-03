@@ -2,7 +2,7 @@ using Core;
 
 namespace Interfaces;
 
-public interface IHp_Model
+public interface IHp_Model  
 {
     /// <summary>
     /// The hp of the entity, in a range of zero to max

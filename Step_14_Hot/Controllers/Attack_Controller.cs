@@ -19,6 +19,6 @@ public class Attack_Controller : Action_Controller
     private void Attack_Command_Handler(Attack_Command command)
     {
         command.Model.Cooldown.Start();
-        command.Target.Hp.Value += command.Model.Amount;
+        command.Target.Hp.Value -= command.Model.Damage;
     }
 }

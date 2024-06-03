@@ -38,14 +38,18 @@ public class Over_Time_Controller
         if (!Can_Do(cmd))
             timers_to_models.Remove(timer);
         else
-        {
-            if (cmd.Activated++ < cmd.Model.Times - 1)
-                timer.Start();
-            else
-                timers_to_models.Remove(timer);
-            cmd.Target.Hp.Value += cmd.Model.Amount;
-        }
+            Do(timer, cmd);
     }
+
+    private void Do(ITimer_Model timer, Over_Time_Command cmd)
+    {
+        if (cmd.Activated++ < cmd.Model.Times - 1)
+            timer.Start();
+        else
+            timers_to_models.Remove(timer);
+        cmd.Target.Hp.Value += Get_Amount(cmd);
+    }
+
 
     private ITimer_Model Get_Or_Create(Over_Time_Command command)
     {
@@ -54,6 +58,14 @@ public class Over_Time_Controller
             return existing.Key;
         else
             return new Timer_Model(command.Model.Time_Between, false);
+    }
+
+    private static int Get_Amount(Over_Time_Command cmd)
+    {
+        if (cmd.Model is Dot_Model)
+            return -(cmd.Model as Dot_Model).Damage;
+        else
+            return (cmd.Model as Hot_Model).Heal;
     }
 
     private static bool Can_Do(Over_Time_Command cmd)

@@ -9,18 +9,18 @@ public class Attack_Model : Action_Model
 {
     public int Damage { get; }
 
-    public Attack_Model(IEntity_Model owner, Attack_Resource resource)
+    public Attack_Model(IHp_Model owner, Attack_Resource resource)
     : base(owner, resource)
     {
         Damage = resource.Damage;
     }
 
-    public override void Do(IEntity_Model target)
+    public override void Do(IHp_Model target)
     {
         new Attack_Command(this, target);
     }
 
-    public override bool Can_Do(IEntity_Model target)
+    public override bool Can_Do(IHp_Model target)
     {
         return new Can_Attack_Request(this, target).Result;
     }

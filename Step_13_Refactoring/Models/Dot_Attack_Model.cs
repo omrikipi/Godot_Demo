@@ -16,8 +16,8 @@ public class Dot_Attack_Model : Attack_Model
         Times = resource.Times;
     }
 
-    public override void Do(IHp_Model enemy)
+    public override void Do(IHp_Model target)
     {
-        new Dot_Attack_Command(this, enemy);
+        new Dot_Attack_Command(this, target);
     }
 }

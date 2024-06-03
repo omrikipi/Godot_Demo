@@ -7,9 +7,9 @@ using Resources;
 
 namespace Controllers;
 
-public class Creat_Models_Controller
+public class Create_Models_Controller
 {
-    public Creat_Models_Controller()
+    public Create_Models_Controller()
     {
         Create_Entity_Model_Request.Handler = Create_Entity_Model_Request_Handler;
     }

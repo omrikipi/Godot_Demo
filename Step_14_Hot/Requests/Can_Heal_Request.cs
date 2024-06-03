@@ -4,7 +4,7 @@ using Models;
 
 namespace Messages;
 
-public record Can_Heal_Request(Heal_Model Model, IEntity_Model Target)
+public record Can_Heal_Request(Heal_Model Model, IHp_Model Target)
     : Request<Can_Heal_Request, bool>
 {
 }

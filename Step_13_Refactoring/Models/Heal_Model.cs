@@ -15,9 +15,9 @@ public class Heal_Model : Action_Model
         Heal = resource.Heal;
     }
 
-    public override void Do(IHp_Model enemy)
+    public override void Do(IHp_Model target)
     {
-        new Heal_Command(this, enemy);
+        new Heal_Command(this, target);
     }
 
     public override bool Can_Do(IHp_Model target)

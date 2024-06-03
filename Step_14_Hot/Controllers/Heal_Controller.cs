@@ -19,6 +19,6 @@ public class Heal_Controller : Action_Controller
     private void Heal_Command_Handler(Heal_Command command)
     {
         command.Model.Cooldown.Start();
-        command.Target.Hp.Value += command.Model.Amount;
+        command.Target.Hp.Value += command.Model.Heal;
     }
 }

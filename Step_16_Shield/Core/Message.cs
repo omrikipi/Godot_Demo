@@ -11,9 +11,9 @@ public abstract record Message<TMessage> : Base
     public Message()
     {
         Started();
-        var e = this as TMessage;
+        var m = this as TMessage;
         foreach (var listener in handlers.ToArray())
-            listener(e);
+            listener(m);
         Ended();
     }
 

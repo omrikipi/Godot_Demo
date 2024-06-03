@@ -3,7 +3,7 @@ using Interfaces;
 
 namespace Commands;
 
-public record Over_Time_Command(IOver_Time_Model Model, IEntity_Model Target) :
+public record Over_Time_Command(IOver_Time_Model Model, IHp_Model Target) :
     Command<Over_Time_Command>()
 {
     public int Activated { get; set; }
