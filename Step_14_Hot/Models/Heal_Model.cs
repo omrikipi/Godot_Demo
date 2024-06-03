@@ -5,14 +5,14 @@ using Resources;
 
 namespace Models;
 
-public class Heal_Model : Action_Model
+public class Heal_Model : Action_Model, IAmount_Model
 {
-    public int Heal { get; }
+    public int Amount { get; }
 
-    public Heal_Model(IEntity_Model owner, Heal_Resource resource)
-    : base(owner, resource)
+    public Heal_Model(IEntity_Model owner, Heal_Resource resource) :
+        base(owner, resource)
     {
-        Heal = resource.Heal;
+        Amount = resource.Heal;
     }
 
     public override void Do(IEntity_Model enemy)
